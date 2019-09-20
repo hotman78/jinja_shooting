@@ -11,9 +11,26 @@ public class Enemy : MonoBehaviour
 
     public GameObject enemy;
     public GameObject player;
+    public GameObject bullet;
     public int x;
     public Text gameover;
-    
+
+    IEnumerator Shoot()
+    {
+
+        while (true)
+        {
+            GameObject obj = Instantiate(bullet);
+            Vector2 vec = transform.position;
+            obj.GetComponent<Bullet>().initXY(vec.x, vec.y, 0.0f, -0.2f);
+            yield return new WaitForSeconds(0.1f);
+        }
+        // 何か処理
+
+
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +44,7 @@ public class Enemy : MonoBehaviour
         vec.y = 10;
         Debug.Log(x);
         enemy.transform.position = vec;
+        StartCoroutine(Shoot());
 
     }
 
