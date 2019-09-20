@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     public GameObject textGUI;
     public GameObject bullet;
     public int x;
+    public int index;
 
 
     IEnumerator Shoot()
@@ -22,9 +23,9 @@ public class Enemy : MonoBehaviour
         while (true)
         {
             GameObject obj = Instantiate(bullet);
-            Vector2 vec = transform.position;
+            Vector2 vec = enemy.transform.position;
             obj.GetComponent<Bullet>().initXY(vec.x, vec.y, 0.0f, -0.2f);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
         }
         // 何か処理
 
@@ -40,7 +41,7 @@ public class Enemy : MonoBehaviour
         x = rnd.Next(-20,20);
         Vector2 vec=new Vector2();
         vec.x = x;
-        vec.y = 10;
+        vec.y = 5;
         Debug.Log(x);
         enemy.transform.position = vec;
         StartCoroutine(Shoot());
@@ -55,6 +56,11 @@ public class Enemy : MonoBehaviour
         vec.y -= 0.05f;
 
         enemy.transform.position = vec;
+
+        if (enemy.transform.position.y<=-5.0f)
+        {
+            Destroy(enemy);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -65,6 +71,10 @@ public class Enemy : MonoBehaviour
         {
             Destroy(collision.gameObject);
             textGUI.GetComponent<Text>().text = "デデドン！（絶望）"; //Kill Player
+        }
+        else if(layerName == "bullet")
+        {
+            Destroy(enemy);
         }
 
         

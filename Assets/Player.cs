@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public GameObject bullet;
     public GameObject enemy;
     public GameObject textGUI;
-
+    public int enemynum = 0;
 
     IEnumerator Shoot()
     {
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
             GameObject obj = Instantiate(bullet);
             Vector2 vec = transform.position;
             obj.GetComponent<Bullet>().initXY(vec.x,vec.y,0.0f,0.2f);
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(0.1f);
         }
         // 何か処理
 
@@ -33,9 +33,12 @@ public class Player : MonoBehaviour
         while (true)
         {
 
-            GameObject obj = (GameObject)Resources.Load("Enemy");
-            Instantiate(obj);
-            yield return new WaitForSeconds(0.1f);
+            
+                GameObject obj = (GameObject)Resources.Load("Enemy");
+                Instantiate(obj);
+                enemynum++;
+            
+            yield return new WaitForSeconds(1.0f);
         }
         // 何か処理
 
@@ -71,7 +74,10 @@ public class Player : MonoBehaviour
         {
             Vector2 vec = player.transform.position;
 
-            vec.y += 0.1f;
+            if (vec.y+0.1f<=5.0f)
+            {
+                vec.y += 0.1f;
+            }
 
             player.transform.position = vec;
         }
@@ -80,7 +86,10 @@ public class Player : MonoBehaviour
         {
             Vector2 vec = player.transform.position;
 
-            vec.y -= 0.1f;
+            if (vec.y - 0.1f >= -5.0f)
+            {
+                vec.y -= 0.1f;
+            }
 
             player.transform.position = vec;
         }
@@ -89,7 +98,12 @@ public class Player : MonoBehaviour
         {
             Vector2 vec = player.transform.position;
 
-            vec.x -= 0.1f;
+
+            if (vec.x - 0.1f >= -20.0f)
+            {
+                vec.x -= 0.1f;
+            }
+           
 
             player.transform.position = vec;
         }
@@ -98,7 +112,11 @@ public class Player : MonoBehaviour
         {
             Vector2 vec = player.transform.position;
 
-            vec.x += 0.1f;
+            if (vec.x + 0.1f <= 20.0f)
+            {
+                vec.x += 0.1f;
+            }
+
 
             player.transform.position = vec;
         }

@@ -58,6 +58,11 @@ public class Bullet : MonoBehaviour{
             }
         }
         bullet.transform.position = vec;
+
+        if (bullet.transform.position.y >= 12.0f|| bullet.transform.position.y <= -12.0f)
+        {
+            Destroy(bullet);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)

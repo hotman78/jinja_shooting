@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3258885934392192403}
   - component: {fileID: 3258885934392192415}
   - component: {fileID: 3258885934392192414}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 6475291218731057042, guid: 0a02b374c646bfc4796fa4f55899fe6b, type: 3}
   bullet: {fileID: 3258885934392192402}
+  textGUI: {fileID: 0}
 --- !u!58 &3258885934392192415
 CircleCollider2D:
   m_ObjectHideFlags: 0
