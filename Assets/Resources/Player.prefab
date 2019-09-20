@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6475291218731057042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16, y: 10, z: 0}
+  m_LocalPosition: {x: 2.399999, y: -2.9999995, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b282ea6432d91433fb65fdb723e01e8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   player: {fileID: 6475291218731057042}
   bullet: {fileID: 3258885934392192402, guid: 2fb1c354bf4fe479e9d43633eb9ccd61, type: 3}
   enemy: {fileID: 32843604240872808, guid: 3d3f5e32fd8d64bdfa6da17505a99fe5, type: 3}

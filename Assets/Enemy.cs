@@ -11,31 +11,14 @@ public class Enemy : MonoBehaviour
 
     public GameObject enemy;
     public GameObject player;
-    public GameObject bullet;
+    public GameObject textGUI;
     public int x;
-    public Text gameover;
-
-    IEnumerator Shoot()
-    {
-
-        while (true)
-        {
-            GameObject obj = Instantiate(bullet);
-            Vector2 vec = transform.position;
-            obj.GetComponent<Bullet>().initXY(vec.x, vec.y, 0.0f, -0.2f);
-            yield return new WaitForSeconds(0.1f);
-        }
-        // 何か処理
-
-
-    }
-
 
     // Start is called before the first frame update
     void Start()
     {
 
-        
+        textGUI=GameObject.Find("Text");
 　　　　 int seed = Environment.TickCount;
         System.Random rnd = new System.Random();
         x = rnd.Next(-20,20);
@@ -51,7 +34,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
         Vector2 vec = enemy.transform.position;
         vec.y -= 0.05f;
 
@@ -64,13 +47,13 @@ public class Enemy : MonoBehaviour
 
         if (layerName == "Player")
         {
-            Destroy(player);
-            gameover.text = "デデドン！（絶望）"; //Kill Player
+            Destroy(collision.gameObject);
+            textGUI.GetComponent<Text>().text = "デデドン！（絶望）"; //Kill Player
         }
-        
+
         else
         {
-            Destroy(enemy);
+            Destroy(gameObject);
         }
     }
 }
