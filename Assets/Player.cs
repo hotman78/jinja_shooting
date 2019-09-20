@@ -31,7 +31,8 @@ public class Player : MonoBehaviour
         while (true)
         {
 
-            GameObject obj = Instantiate(enemy);
+            GameObject obj = (GameObject)Resources.Load("Enemy");
+            Instantiate(obj);
             yield return new WaitForSeconds(0.1f);
         }
         // 何か処理
