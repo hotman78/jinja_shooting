@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bullet : MonoBehaviour{
 
     public GameObject player;
     public GameObject bullet;
+    public GameObject textGUI;
     private int state;
     private float vx,vy,ax,ay;
     private float vr,vθ,ar,aθ;
     // Start is called before the first frame update
     void Start(){
+        textGUI = GameObject.Find("Text");
         Vector2 vec = player.transform.position;
         bullet.transform.position = vec;
     }
@@ -55,6 +58,19 @@ public class Bullet : MonoBehaviour{
             }
         }
         bullet.transform.position = vec;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        string layerName = LayerMask.LayerToName(collision.gameObject.layer);
+        string bulletlayername = LayerMask.LayerToName(bullet.layer);
+        if (layerName == "Player"&&bulletlayername=="enemy")
+        {
+            Destroy(collision.gameObject);
+            textGUI.GetComponent<Text>().text = "デデドン！（絶望）"; //Kill Player
+        }
+
+
     }
 
 }
