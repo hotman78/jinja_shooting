@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{4C29D328-2221-BEEB-FDBB-E772EA262183}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Enemy.cs">
+    <Files>
+      <File FileName="Assets/Player.cs" Line="42" Column="9" />
+      <File FileName="Assets/Bullet.cs" />
+      <File FileName="../OwlMusicGame/Assets/fall.cs" />
+      <File FileName="Assets/Enemy.cs" Line="50" Column="55" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ShootingGame" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Enemy.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4e028792-b232-4f42-90df-2506f7b6bdaf" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
