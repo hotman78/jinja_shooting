@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 32843604240872808}
-  player: {fileID: 0}
+  player: {fileID: 6475291218731057042, guid: 0a02b374c646bfc4796fa4f55899fe6b, type: 3}
   x: 0
   gameover: {fileID: 0}
 --- !u!61 &32843604240872724

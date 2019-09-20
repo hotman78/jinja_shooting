@@ -23,6 +23,7 @@ public class Bullet : MonoBehaviour{
         this.vy=vy;
         this.ax=ax;
         this.ay=ay;
+        player.transform.position=vec;
     }
     public void initRθ(float x,float y,float vr=0,float vθ=0,float ar=0,float aθ=0){
         Vector2 vec = player.transform.position;
