@@ -3,19 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour{
-
-    public GameObject player;
-    public GameObject bullet;
     private int state;
     private float vx,vy,ax,ay;
     private float vr,vθ,ar,aθ;
+    bool attribute;
     // Start is called before the first frame update
-    void Start(){
-        Vector2 vec = player.transform.position;
-        bullet.transform.position = vec;
-    }
+    void Start(){}
     public void initXY(float x,float y,float vx=0,float vy=0,float ax=0,float ay=0){
-        Vector2 vec = player.transform.position;
+        Vector2 vec;
         state=0;
         vec.x=x;
         vec.y=y;
@@ -23,10 +18,10 @@ public class Bullet : MonoBehaviour{
         this.vy=vy;
         this.ax=ax;
         this.ay=ay;
-        player.transform.position=vec;
+        transform.position=vec;
     }
     public void initRθ(float x,float y,float vr=0,float vθ=0,float ar=0,float aθ=0){
-        Vector2 vec = player.transform.position;
+        Vector2 vec;
         state=1;
         vec.x=x;
         vec.y=y;
@@ -34,10 +29,11 @@ public class Bullet : MonoBehaviour{
         this.vθ=vθ;
         this.ar=ar;
         this.aθ=aθ;
+        transform.position=vec;
     }
     // Update is called once per frame
     void FixedUpdate(){
-        Vector2 vec = bullet.transform.position;
+        Vector2 vec = transform.position;
         switch(state){
             case 0:{
                 vx+=ax;
@@ -54,7 +50,8 @@ public class Bullet : MonoBehaviour{
                 break;
             }
         }
-        bullet.transform.position = vec;
+        transform.position = vec;
+        if (!GetComponent<Renderer>().isVisible)Destroy(this.gameObject);
     }
 
 }

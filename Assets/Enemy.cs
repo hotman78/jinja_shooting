@@ -8,51 +8,37 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-
-    public GameObject enemy;
-    public GameObject player;
-    public GameObject textGUI;
-    public int x;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-
-        textGUI=GameObject.Find("Text");
-　　　　 int seed = Environment.TickCount;
-        System.Random rnd = new System.Random();
-        x = rnd.Next(-20,20);
-        Vector2 vec=new Vector2();
-        vec.x = x;
-        vec.y = 10;
-        Debug.Log(x);
-        enemy.transform.position = vec;
-
+    //private GameObject textGUI=GameObject.Find("Text");
+    Func<float,float,Vector2> init;
+    Func<float,float,float,Vector2> nextTo;
+    int frameCount=0;
+    int hp;
+    public void Create(int _hp,Func<float,float,Vector2> _init,Func<float,float,float,Vector2> _nextTo){
+        hp=_hp;
+        init=_init;
+        nextTo=_nextTo;
+        Vector2 vec = transform.position;
+        float x=vec.x,y=vec.y;
+        Vector2 res=init(x,y);
+        transform.position=res;
     }
+    // Start is called before the first frame update
+    void Start(){}
 
     // Update is called once per frame
-    void Update()
-    {
-       
-        Vector2 vec = enemy.transform.position;
-        vec.y -= 0.05f;
-
-        enemy.transform.position = vec;
+    void FixedUpdate(){
+        if(nextTo==null)return;
+        Vector2 vec = transform.position;
+        float x=vec.x,y=vec.y;
+        Vector2 res=nextTo(x,y,frameCount);
+        transform.position=res;
+        frameCount++;
     }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        string layerName = LayerMask.LayerToName(collision.gameObject.layer);
-
-        if (layerName == "Player")
-        {
-            Destroy(collision.gameObject);
-            textGUI.GetComponent<Text>().text = "デデドン！（絶望）"; //Kill Player
+    void OnTriggerEnter2D(Collider2D other){
+        string layerName = LayerMask.LayerToName(other.gameObject.layer);
+        if (layerName == "player_bullet"){
+            hp--;
         }
-        
-        else
-        {
-            Destroy(gameObject);
-        }
+        if(hp==0)Destroy(this.gameObject);
     }
 }
