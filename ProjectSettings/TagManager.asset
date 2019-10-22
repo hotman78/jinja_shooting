@@ -15,8 +15,13 @@ TagManager:
   - 
   - Player
   - enemy
+<<<<<<< HEAD
   - player_bullet
   - enemy_bullet
+=======
+  - bullet
+  - 
+>>>>>>> 225aa55a2f5650b71cae771b2493a090aef92b08
   - 
   - 
   - 

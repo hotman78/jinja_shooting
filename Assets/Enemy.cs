@@ -6,8 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
-{
+public class Enemy : MonoBehaviour{
     //private GameObject textGUI=GameObject.Find("Text");
     Func<float,float,Vector2> init;
     Func<float,float,float,Vector2> nextTo;
