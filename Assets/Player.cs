@@ -5,10 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-
-    public GameObject player;
     public GameObject bullet;
-    public GameObject enemy;
     bool[] keyflag=new bool[4]{false,false,false,false};
     int hp=3;
     IEnumerator Shot(){
